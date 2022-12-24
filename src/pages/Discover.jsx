@@ -1,16 +1,11 @@
-import { useDispatch, useSelector } from "react-redux";
 import { Error, Loader, SongCard } from "../components";
 import { useGetTopChartsQuery } from '../redux/services/spotify'
 
 const Discover = () => {
-    const dispatch = useDispatch()
-    const { activeSong, isPlaying } = useSelector((state) => state.player)
     const { data, isFetching, error } = useGetTopChartsQuery()
 
     if (isFetching) return <Loader title="Loading Songs ..." />
     if (error) return <Error />
-
-    console.log(data)
 
     return (
         <div className="flex flex-col">
@@ -23,8 +18,6 @@ const Discover = () => {
                         key={song.item.id}
                         song={song}
                         i={i}
-                        isPlaying={isPlaying}
-                        activeSong={activeSong}
                         data={data}
                     />
                 ))}
