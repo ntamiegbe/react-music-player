@@ -1,20 +1,21 @@
 import { useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { FreeMode } from "swiper";
 
-import { useGetAlbumChartsQuery } from '../redux/services/spotify'
-import { useGetArtistsChartsQuery } from '../redux/services/spotify'
+import { useGetAlbumChartsQuery, useGetArtistsChartsQuery } from '../redux/services/spotify'
 
 import 'swiper/css'
 import 'swiper/css/free-mode'
 
 const AlbumCard = ({ album, i }) => (
   <div className="w-full flex flex-row items-center py-2 p-4 rounded-lg cursor-pointer">
-    <h3 className="font-bold text-base text-yellowGreen mr-4">{i + 1}.</h3>
+    <h3 className="font-bold text-base text-white mr-4">{i + 1}.</h3>
     <div className="flex-1 flex flex-row justify-between items-center">
       <img src={album.item.image_url} alt="" className="w-20 h-20 rounded-lg"/>
+      <div className="flex flex-1 flex-col justify-center mx-3">
+        <p className="text-xl font-bold text-white">Album Title</p>
+        <p className="text-base text-white mt-1">Artist</p>
+      </div>
     </div>
     {album.item.name}
   </div>

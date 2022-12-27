@@ -25,51 +25,24 @@ export const spotifyApi = createApi({
     endpoints: (builder) => ({
         getTopCharts: builder.query({
             query: () => '/songs/chart?time_period=month&per_page=40'
-        })
-    })
-})
-
-export const spotifyApi2 = createApi({
-    reducerPath: 'spotifyApi2',
-    baseQuery: fetchBaseQuery({
-        baseUrl: 'https://genius-song-lyrics1.p.rapidapi.com',
-        prepareHeaders: (headers) => {
-            headers.set('X-RapidAPI-Key', '427c46f0f9msh1dfe1399473d850p12e63ejsn21e3dbd0a86d')
-            return headers
-        }
-    }),
-    endpoints: (builder) => ({
-        getAlbumCharts: builder.query({
-            query: () => '/albums/chart?time_period=month&per_page=10'
-        })
-    })
-})
-
-export const spotifyApi3 = createApi({
-    reducerPath: 'spotifyApi3',
-    baseQuery: fetchBaseQuery({
-        baseUrl: 'https://genius-song-lyrics1.p.rapidapi.com',
-        prepareHeaders: (headers) => {
-            headers.set('X-RapidAPI-Key', '427c46f0f9msh1dfe1399473d850p12e63ejsn21e3dbd0a86d')
-            return headers
-        }
-    }),
-    endpoints: (builder) => ({
+        }),
         getArtistsCharts: builder.query({
             query: () => '/artists/chart?time_period=month&per_page=10'
+        }),
+        getAlbumCharts: builder.query({
+            query: () => '/albums/chart?time_period=month&per_page=10'
+        }),
+        getSongLyrics: builder.query({
+            query: (songid) => `songs/${songid}/lyrics`
         })
     })
 })
 
 export const {
     useGetTopChartsQuery,
+    useGetArtistsChartsQuery,
+    useGetAlbumChartsQuery,
+    useGetSongLyricsQuery,
 } = spotifyApi
 
-export const {
-    useGetAlbumChartsQuery,
-} = spotifyApi2
-
-export const {
-    useGetArtistsChartsQuery,
-} = spotifyApi3
  
